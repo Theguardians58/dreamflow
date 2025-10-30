@@ -1,0 +1,27 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "aura-bloom-9a813",
+          "appId": "1:80337691487:android:8b72a2bdb4974783974cea",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "aura-bloom-9a813",
+          "configurations": {
+            "android": "1:80337691487:android:8b72a2bdb4974783974cea",
+            "ios": "1:80337691487:ios:2d0fc2b659d61aaa974cea",
+            "web": "1:80337691487:web:fd6421db0fbd3e19974cea"
+          }
+        }
+      }
+    }
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  }
+}

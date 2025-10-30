@@ -1,0 +1,37 @@
+name: aura_bloom
+description: "Aura is a stylish e-commerce app designed for Indian women, offering a delightful and seamless shopping experience with elegant animations and personalized fashion discovery."
+publish_to: "none"
+version: 1.0.0
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  google_fonts: ^6.1.0
+  shared_preferences: ^2.0.0
+  provider: ^6.0.0
+  lottie: ^3.0.0
+  flutter_staggered_animations: ^1.0.0
+  firebase_core: ^4.2.0
+  cloud_firestore: '>=5.5.0'
+  firebase_auth: '>=5.3.3'
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: assets/icons/dreamflow_icon.jpg
+  remove_alpha_ios: true

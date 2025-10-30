@@ -1,0 +1,38 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    // Users collection - Private pattern
+    // Only the user can read/write their own document
+    match /users/{userId} {
+      allow read: if isOwner(userId);
+      allow create: if isAuthenticated() && request.auth.uid == request.resource.data.id;
+      allow update, delete: if isOwner(userId);
+    }
+    
+    // Products collection - Public read, no write
+    // All users can read products, but only admins should write (handle separately)
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if false; // Products should be managed via admin panel
+    }
+    
+    // Orders collection - Private pattern
+    // Users can only read/write their own orders
+    match /orders/{orderId} {
+      allow read: if isAuthenticated() && request.auth.uid == resource.data.userId;
+      allow create: if isAuthenticated() && request.auth.uid == request.resource.data.userId;
+      allow update: if isAuthenticated() && request.auth.uid == resource.data.userId;
+      allow delete: if false; // Orders should not be deleted
+    }
+  }
+}
